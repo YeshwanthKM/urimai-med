@@ -1,0 +1,212 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+    padding: var(--spacing-lg);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.dark .login-card {
+    background: var(--dark-glass-bg);
+    border-color: var(--dark-glass-border);
+}
+
+.login-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.login-logo {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--medical-blue) 0%, var(--medical-purple) 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: var(--spacing-sm);
+    box-shadow: 0 8px 16px rgba(14, 165, 233, 0.2);
+}
+
+.login-header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--gray-800);
+    background: linear-gradient(135deg, var(--medical-blue) 0%, var(--medical-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-header p {
+    color: var(--gray-600);
+    margin: 0;
+}
+
+body.dark .login-header p {
+    color: var(--gray-400);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+body.dark .form-group label {
+    color: var(--gray-300);
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon-wrapper svg {
+    position: absolute;
+    left: 12px;
+    color: var(--gray-400);
+    pointer-events: none;
+}
+
+.input-icon-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    color: var(--gray-800);
+}
+
+body.dark .input-icon-wrapper input {
+    background: var(--dark-elevated);
+    border-color: var(--gray-700);
+    color: var(--gray-100);
+}
+
+.input-icon-wrapper input:focus {
+    outline: none;
+    border-color: var(--medical-blue);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--medical-blue) 0%, var(--medical-purple) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-sm);
+}
+
+.login-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.login-footer p {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+body.dark .login-footer p {
+    color: var(--gray-400);
+}
+
+.login-footer button {
+    background: none;
+    border: none;
+    color: var(--medical-blue);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.guest-button {
+    background: none;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-600);
+    padding: 8px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.dark .guest-button {
+    border-color: var(--gray-700);
+    color: var(--gray-400);
+}
+
+.guest-button:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+}
+
+body.dark .guest-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
