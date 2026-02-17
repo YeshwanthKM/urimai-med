@@ -39,19 +39,19 @@
 .user-avatar {
     width: 40px;
     height: 40px;
-    background: var(--gradient-medical);
+    background: linear-gradient(135deg, var(--medical-blue), var(--medical-indigo));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: 700;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 2px solid white;
 }
 
 body.dark .user-avatar {
-    border-color: var(--gray-700);
+    border-color: var(--gray-800);
 }
 
 .logo-section {
@@ -75,7 +75,7 @@ body.dark .user-avatar {
 .logo-text {
     font-size: 1.75rem;
     font-weight: 700;
-    background: var(--gradient-medical);
+    background: linear-gradient(135deg, var(--medical-blue), var(--medical-indigo));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

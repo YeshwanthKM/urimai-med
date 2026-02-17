@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowRight, Shield, AlertTriangle, CheckCircle, Info, Stethoscope, Activity } from 'lucide-react';
+import { ArrowRight, Shield, AlertTriangle, CheckCircle, Info, Stethoscope, Activity, Table } from 'lucide-react';
+import { triageDataset } from '../utils/triageDataset';
 import './Home.css';
 
 function Home({ onStartTriage }) {
@@ -21,29 +22,35 @@ function Home({ onStartTriage }) {
                 </button>
             </div>
 
-            {/* What We Do Section */}
+            {/* Problem Statement Section */}
             <div className="info-section">
                 <div className="section-header">
                     <Info size={24} />
-                    <h2>What URIMAI MED Does</h2>
+                    <h2>Problem Statement</h2>
                 </div>
                 <p className="section-description">
-                    URIMAI MED is a <strong>navigation and triage support system</strong> that helps you determine the appropriate level of care based on your symptoms. We use a rule-based approach to classify symptom severity and guide you to the right healthcare resource.
+                    Design a software-based <strong>MediGuide Bot</strong> that performs patient navigation and triage using rule-based logic. The system must interpret symptoms, classify severity conservatively, detect red flags, and guide users to appropriate care levels. All outputs must be dataset-driven and safety-focused. The bot must act only as a navigation and escalation tool — not a diagnostic or treatment system.
                 </p>
             </div>
 
-            {/* Features Grid */}
+            {/* Mandatory Features & Restrictions Grid */}
             <div className="features-grid">
                 <div className="feature-card">
-                    <div className="feature-icon green">
+                    <div className="feature-icon blue">
                         <CheckCircle size={28} />
                     </div>
-                    <h3>What We Provide</h3>
+                    <h3>Mandatory Features</h3>
                     <ul className="feature-list">
-                        <li>Symptom severity classification</li>
-                        <li>Care level routing (Emergency, GP, Specialist, Home Care)</li>
-                        <li>Safety-first escalation for unclear symptoms</li>
-                        <li>Clear, rule-based reasoning</li>
+                        <li>Symptom Normalization</li>
+                        <li>Red-Flag Screening</li>
+                        <li>Conservative Severity Logic</li>
+                        <li>Care Routing (Home, GP, Specialist, Emergency)</li>
+                        <li>Dataset-Only Reasoning</li>
+                        <li>Non-Diagnostic Guidance</li>
+                        <li>Ambiguity Handling</li>
+                        <li>Ethical Safeguards</li>
+                        <li>Structured Output</li>
+                        <li>Fail-Safe Escalation</li>
                     </ul>
                 </div>
 
@@ -51,27 +58,27 @@ function Home({ onStartTriage }) {
                     <div className="feature-icon red">
                         <AlertTriangle size={28} />
                     </div>
-                    <h3>What We DO NOT Provide</h3>
+                    <h3>Absolute Restrictions</h3>
                     <ul className="feature-list">
-                        <li>Medical diagnoses or condition identification</li>
-                        <li>Treatment or medication recommendations</li>
-                        <li>Medical opinions or assessments</li>
-                        <li>Replacement for professional medical care</li>
+                        <li>No diagnosis or disease naming</li>
+                        <li>No treatment or medication advice</li>
+                        <li>No external medical sources</li>
+                        <li>No storing personal medical data</li>
+                        <li>No suppressing red-flag escalation</li>
+                        <li>No unexplained outputs</li>
                     </ul>
                 </div>
+            </div>
 
-                <div className="feature-card">
-                    <div className="feature-icon blue">
-                        <Shield size={28} />
-                    </div>
-                    <h3>Safety-First Approach</h3>
-                    <ul className="feature-list">
-                        <li>Red-flag symptoms automatically route to Emergency</li>
-                        <li>Conservative escalation for ambiguous inputs</li>
-                        <li>Transparent decision-making process</li>
-                        <li>Ethical disclaimers on all responses</li>
-                    </ul>
+            {/* Expected Outcome */}
+            <div className="info-section secondary">
+                <div className="section-header">
+                    <Activity size={24} />
+                    <h2>Expected Outcome</h2>
                 </div>
+                <p className="section-description">
+                    The system should convert symptoms into structured inputs, classify urgency conservatively, detect and escalate dangerous cases, guide users to correct care levels, and reduce unnecessary emergency visits.
+                </p>
             </div>
 
             {/* How It Works Section */}
@@ -126,6 +133,52 @@ function Home({ onStartTriage }) {
                     <p className="notice-footer">
                         Always consult with qualified healthcare professionals for medical advice, diagnosis, and treatment.
                     </p>
+                </div>
+            </div>
+
+            {/* Clinical Dataset Section */}
+            <div className="info-section">
+                <div className="section-header">
+                    <Table size={24} />
+                    <h2>Clinical Triage Dataset</h2>
+                </div>
+                <p className="section-description">
+                    The following table contains the complete rule-based dataset used by URIMAI MED for triage navigation.
+                </p>
+                <div className="dataset-table-container">
+                    <table className="dataset-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Input</th>
+                                <th>Symptom</th>
+                                <th>Red-Flag?</th>
+                                <th>Severity</th>
+                                <th>Routing</th>
+                                <th>Guidance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {triageDataset
+                                .slice()
+                                .sort((a, b) => a.id - b.id)
+                                .map((item) => (
+                                    <tr key={item.id} className={item.isRedFlag ? 'red-flag-row' : ''}>
+                                        <td>{item.id}</td>
+                                        <td className="italic">"{item.userInput}"</td>
+                                        <td>{item.normalizedSymptom}</td>
+                                        <td className="center">{item.isRedFlag ? 'YES' : 'NO'}</td>
+                                        <td>
+                                            <span className={`severity-tag ${item.severity.toLowerCase()}`}>
+                                                {item.severity}
+                                            </span>
+                                        </td>
+                                        <td>{item.careRouting}</td>
+                                        <td className="guidance-cell">{item.guidance}</td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

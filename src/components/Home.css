@@ -33,14 +33,22 @@
 .hero-icon {
     width: 96px;
     height: 96px;
-    background: linear-gradient(135deg, var(--medical-blue) 0%, var(--medical-purple) 100%);
+    background: linear-gradient(135deg, white 0%, #F1F5F9 100%);
+    border: 1px solid rgba(14, 165, 233, 0.2);
     border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    box-shadow: 0 8px 32px rgba(14, 165, 233, 0.3);
+    color: var(--medical-blue);
+    box-shadow: 0 8px 32px rgba(148, 163, 184, 0.2);
     animation: pulse 3s ease-in-out infinite;
+}
+
+body.dark .hero-icon {
+    background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-bg) 100%);
+    border-color: rgba(20, 184, 166, 0.2);
+    color: var(--medical-teal);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes pulse {
@@ -60,7 +68,7 @@
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--medical-blue) 0%, var(--medical-purple) 50%, var(--medical-teal) 100%);
+    background: linear-gradient(135deg, var(--medical-blue) 0%, var(--medical-indigo) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -393,6 +401,102 @@ body.dark .notice-content p {
 .cta-footer {
     text-align: center;
     padding: var(--spacing-xl) 0;
+}
+
+.dataset-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    margin-top: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark .dataset-table-container {
+    background: rgba(30, 41, 59, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dataset-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+    min-width: 800px;
+}
+
+.dataset-table th,
+.dataset-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+}
+
+.dataset-table th {
+    background: #F8FAFC;
+    color: var(--gray-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+body.dark .dataset-table th {
+    color: var(--medical-teal);
+    background: rgba(30, 41, 59, 0.5);
+}
+
+.dataset-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.dataset-table .italic {
+    font-style: italic;
+    color: var(--gray-500);
+}
+
+.dataset-table .center {
+    text-align: center;
+}
+
+.red-flag-row {
+    background: rgba(239, 68, 68, 0.05) !important;
+}
+
+.severity-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.severity-tag.high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.severity-tag.moderate {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.severity-tag.low {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.guidance-cell {
+    font-weight: 500;
+    color: var(--medical-blue);
+}
+
+body.dark .guidance-cell {
+    color: var(--medical-teal);
+}
+
+.info-section.secondary {
+    margin-top: 2rem;
 }
 
 /* Responsive Design */
